@@ -8,22 +8,26 @@ type componentProps = {
 const BaseURL = `https://opentdb.com/api.php?amount=1`
 
 export async function ApiFetch(props: componentProps) {
+    try {
 
-    const response = await fetch(`${BaseURL}&category=${props.category || '18'}&difficulty=${props.difficulty || 'medium'}&type=${props.type || 'multiple'}`)
-    const result = await response.json()
+        const response = await fetch(`${BaseURL}&category=${props.category || '18'}&difficulty=${props.difficulty || 'medium'}&type=${props.type || 'multiple'}`)
+        const result = await response.json()
 
-    const data = result.results[0]
-    const getOptions = [
-        ...(data.incorrect_answers ?? []),
-        data.correct_answer
-    ]
+        const data = result.results[0]
+        const getOptions = [
+            ...(data.incorrect_answers ?? []),
+            data.correct_answer
+        ]
 
-    const options = shuffleArray(getOptions)
+        const options = shuffleArray(getOptions)
 
 
-    return {
-        ...data,
-        options
+        return {
+            ...data,
+            options
+        }
+    } catch (error) {
+        console.log((error as Error).message)
     }
 }
 

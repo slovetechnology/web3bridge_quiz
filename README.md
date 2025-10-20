@@ -1,87 +1,147 @@
-# Welcome to React Router!
+# 🧠 Dynamic Quiz Game
 
-A modern, production-ready template for building full-stack React applications using React Router.
+A fun and interactive **Quiz Game App** built with **React.js**, allowing players to test their knowledge across various topics.  
+The game fetches live questions from the [Open Trivia Database API](https://opentdb.com/api_config.php), displays one question at a time, provides instant feedback after each answer, and shows the player’s total score at the end.  
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/remix-run/react-router-templates/tree/main/default)
+---
 
-## Features
+## 🚀 Features
 
-- 🚀 Server-side rendering
-- ⚡️ Hot Module Replacement (HMR)
-- 📦 Asset bundling and optimization
-- 🔄 Data loading and mutations
-- 🔒 TypeScript by default
-- 🎉 TailwindCSS for styling
-- 📖 [React Router docs](https://reactrouter.com/)
+✅ Fetches real quiz questions dynamically from a free public API  
+✅ Displays one question at a time for focused gameplay  
+✅ Shuffles answers randomly to ensure fairness  
+✅ Provides instant feedback (“Correct ✅” or “Wrong ❌”)  
+✅ Displays final score at the end of the game  
+✅ Option to restart the game for a new session  
 
-## Getting Started
+---
 
-### Installation
+## 🧩 Tech Stack
 
-Install the dependencies:
+- **Frontend:** React.js (Vite or CRA)
+- **Router:** React Router v6
+- **Styling:** TailwindCSS or CSS Modules
+- **Data Source:** [Open Trivia DB API](https://opentdb.com/api.php?amount=10&type=multiple)
 
+---
+
+## ⚙️ Installation & Setup
+
+### 1️⃣ Clone the Repository
+```bash
+git clone https://github.com/slovetechnology/web3bridge_quiz.git
+cd quiz-game
+```
+
+### 2️⃣ Install Dependencies
 ```bash
 npm install
 ```
 
-### Development
-
-Start the development server with HMR:
-
+### 3️⃣ Start the Development Server
 ```bash
 npm run dev
 ```
 
-Your application will be available at `http://localhost:5173`.
-
-## Building for Production
-
-Create a production build:
-
-```bash
-npm run build
-```
-
-## Deployment
-
-### Docker Deployment
-
-To build and run using Docker:
-
-```bash
-docker build -t my-app .
-
-# Run the container
-docker run -p 3000:3000 my-app
-```
-
-The containerized application can be deployed to any platform that supports Docker, including:
-
-- AWS ECS
-- Google Cloud Run
-- Azure Container Apps
-- Digital Ocean App Platform
-- Fly.io
-- Railway
-
-### DIY Deployment
-
-If you're familiar with deploying Node applications, the built-in app server is production-ready.
-
-Make sure to deploy the output of `npm run build`
-
-```
-├── package.json
-├── package-lock.json (or pnpm-lock.yaml, or bun.lockb)
-├── build/
-│   ├── client/    # Static assets
-│   └── server/    # Server-side code
-```
-
-## Styling
-
-This template comes with [Tailwind CSS](https://tailwindcss.com/) already configured for a simple default starting experience. You can use whatever CSS framework you prefer.
+The app will start on **http://localhost:5173**.
 
 ---
 
-Built with ❤️ using React Router.
+## 🧠 API Source
+
+The game uses the **Open Trivia Database API**, which provides thousands of categorized questions for free:
+
+**Base Endpoint:**
+```bash
+https://opentdb.com/api.php?amount=10&type=multiple
+```
+
+You can customize:
+- `amount` → Number of questions  
+- `category` → Topic (e.g., General Knowledge, Sports)  
+- `difficulty` → easy | medium | hard  
+- `type` → multiple | boolean  
+
+---
+
+## 🧮 How It Works
+
+1. On load, the app fetches quiz data dynamically from the API.  
+2. Each question and its options are shuffled for randomness.  
+3. Players select one answer — instant feedback appears.  
+4. After 1.5 seconds, the next question is displayed automatically.  
+5. When all questions are answered, the total score is displayed.  
+6. The player can replay for a new set of random questions.
+
+---
+
+## 🧪 Example API Response
+
+```json
+{
+  "response_code": 0,
+  "results": [
+    {
+      "category": "Science: Computers",
+      "type": "multiple",
+      "difficulty": "medium",
+      "question": "What does CPU stand for?",
+      "correct_answer": "Central Processing Unit",
+      "incorrect_answers": [
+        "Computer Personal Unit",
+        "Central Process Unit",
+        "Computer Processing Unit"
+      ]
+    }
+  ]
+}
+```
+
+---
+
+## 🖼️ Screenshot
+
+*(Optional — add an image preview of your quiz UI here)*  
+```
+![Quiz App Screenshot](./screenshot.png)
+```
+
+---
+
+## 🧩 Folder Structure
+
+```
+src/
+ ├── components/
+ │    └── QuizGame.jsx
+ ├── App.jsx
+ ├── index.js
+ ├── styles/
+ │    └── quiz.css
+ └── assets/
+      └── logo.png
+```
+
+---
+
+## 🧠 Future Improvements
+
+- ✅ Category & difficulty selection before starting the quiz  
+- ✅ Add timer per question  
+- ✅ Add leaderboard or scoring history  
+- ✅ Save player results in local storage or database  
+- ✅ Multi-round gameplay  
+
+---
+
+## 📜 License
+
+This project is open-source and available under the **MIT License**.
+
+---
+
+## 👨🏾‍💻 Author
+
+**George Godslove Nkwachukwu**  
+Senior Web Engineer | React & Node.js Developer  
+🌍 [GitHub](https://github.com/slovetechnology)
