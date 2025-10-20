@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { ApiFetch } from "~/components/ApiFetch";
+import { ApiFetch, locals } from "~/components/ApiFetch";
 import Formbutton from "~/components/Formbutton";
 import GameMode from "~/components/GameMode";
 import { dispatchQuestion } from "~/store/reducer";
@@ -17,6 +17,15 @@ export default function Home() {
   const [loading, setLoading] = React.useState(false)
   const [mode, setMode] = React.useState(false)
   const dispatch = useDispatch()
+  const localStore = JSON.parse(localStorage.getItem(locals) || "[]")
+
+  React.useEffect(() => {
+    (() => {
+      if (!locals) {
+        localStorage.setItem(locals, JSON.stringify([]))
+      }
+    })()
+  }, [])
 
 
   async function StartGame() {

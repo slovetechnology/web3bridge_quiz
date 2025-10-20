@@ -46,3 +46,5 @@ export async function Alert(message: string, type: toastProps) {
     const { toast } = await import("react-toastify");
     toast(message, { type });
 }
+
+export const locals = "QUIZ"
