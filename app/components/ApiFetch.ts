@@ -27,7 +27,7 @@ export async function ApiFetch(props: componentProps) {
             options
         }
     } catch (error) {
-        console.log((error as Error).message)
+        Alert((error as Error).message, "error")
     }
 }
 
@@ -38,4 +38,11 @@ function shuffleArray(array: string[]) {
         [arr[i], arr[j]] = [arr[j], arr[i]]; // swap elements
     }
     return arr;
+}
+
+type toastProps = 'success' | 'error' | 'default' | 'info' | 'warning'
+
+export async function Alert(message: string, type: toastProps) {
+    const { toast } = await import("react-toastify");
+    toast(message, { type });
 }
